@@ -1,5 +1,5 @@
 import { HttpError } from '../../exceptions/exceptions';
-import { getStringifiedQuery } from 'helpers/helpers';
+import { getStringifiedQuery } from '../../helpers/helpers';
 import { StorageKey, HttpHeader, HttpMethod } from '../../common/enums/enums';
 
 class Http {
@@ -32,7 +32,7 @@ class Http {
       .catch(this._throwError);
   }
 
-  _getHeaders({ hasAuth, contentType }) {
+  _getHeaders({ hasAuth, contentType, accept }) {
     const headers = new Headers();
 
     if (contentType) {

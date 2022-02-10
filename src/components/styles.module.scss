@@ -1,0 +1,21 @@
+.header {
+  z-index: 4;
+
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  background-color: white;
+  flex: 0 0 auto;
+}
+
+.footer {
+  z-index: 1;
+
+  position: sticky;
+  bottom: 0;
+
+  width: 100%;
+  background-color: white;
+  flex: 0 0 auto;
+}

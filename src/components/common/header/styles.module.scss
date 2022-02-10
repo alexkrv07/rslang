@@ -1,0 +1,54 @@
+.headerWrp {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+  flex-grow: 1;
+  background-color: white;
+  padding: 1em 2em 1em;
+}
+
+.nav {
+  margin: 0 auto 0 2rem;
+}
+
+.headerMenu {
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.menuItem {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.userWrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: black;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.logoutBtn,
+.logoutBtn:hover {
+  border: none;
+  box-shadow: none;
+}
+
+.menuBtn {
+  color: gray;
+  &:hover {
+    color: black !important;
+  }
+}
+
+.auth {
+  margin-left: auto;
+}

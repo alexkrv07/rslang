@@ -1,5 +1,5 @@
 const IconSize = {
-  // LARGE: 'lg'
+  LARGE: 'lg'
 };
 
 export { IconSize };

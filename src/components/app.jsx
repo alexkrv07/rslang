@@ -8,17 +8,22 @@ import {
   Header,
   PrivateRoute,
   PublicRoute,
+  Footer,
   // Notifications
 } from './common/common';
 import SignPage from './sign/sign';
 import NotFoundPage from './not-found/not-found';
+import AboutPage from './about/about';
 import ProfilePage from './profile/profile';
+
+import styles from './styles.module.scss';
 
 const Routing = () => {
   const { user } = useSelector(state => ({
     user: state.profile.user
   }));
   const dispatch = useDispatch();
+// const user = 'Alex';
 
   const hasToken = Boolean(storage.getItem(StorageKey.TOKEN));
   const hasUser = Boolean(user);
@@ -42,24 +47,30 @@ const Routing = () => {
   // }
 
   return (
-    <div className="fill">
-      {/* {hasUser && (
-        <header>
-          <Header user={user} onUserLogout={handleUserLogout} />
-        </header>
-      )} */}
-      <main className="fill">
+
+    <>
+      <header className={styles.header}>
+        <Header user={user} onUserLogout={handleUserLogout} />
+      </header>
+      <main className="main">
+        <h1 className="visually-hidden">
+          RSLang
+        </h1>
         <Routes>
           <Route path={AppRoute.LOGIN} element={<PublicRoute component={SignPage} />} />
           <Route path={AppRoute.REGISTRATION} element={<PublicRoute component={SignPage} />} />
-          {/* <Route path={AppRoute.ROOT} element={<PrivateRoute component={ThreadPage} />} /> */}
+          <Route path={AppRoute.ROOT} element={<PublicRoute component={AboutPage} />} />
           <Route path={AppRoute.PROFILE} element={<PrivateRoute component={ProfilePage} />} />
           {/* <Route path={AppRoute.SHARE_$POSTHASH} element={<PrivateRoute component={SharedPostPage} />} /> */}
           <Route path={AppRoute.ANY} element={<NotFoundPage />} />
         </Routes>
       </main>
+      <footer className={styles.footer}>
+        <Footer/>
+      </footer>
       {/* <Notifications onPostApply={handlePostApply} user={user} /> */}
-    </div>
+
+    </>
   );
 };
 

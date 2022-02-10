@@ -1,34 +1,51 @@
 import {
   // faAt,
+  faBookOpenReader,
   // faCircleNotch,
+  faChartColumn,
   // faComment,
   // faCopy,
-  // faFrown,
+  faFrown,
+  faGear,
+  faHeadphonesSimple,
   // faImage,
   // faLock,
+  faPersonRunning,
   // faShareAlt,
-  // faSignOutAlt,
+  faSignOutAlt,
   // faThumbsDown,
   // faThumbsUp,
   // faUser,
-  // faUserCircle
+  faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
+
+import {
+  faGithub,
+} from '@fortawesome/free-brands-svg-icons';
+
+
+
 import { IconName } from '../../../common/enums/enums';
 
 const iconNameToSvgIcon = {
   // [IconName.AT]: faAt,
+  [IconName.BOOK_OPEN]: faBookOpenReader,
   // [IconName.COMMENT]: faComment,
   // [IconName.COPY]: faCopy,
-  // [IconName.FROWN]: faFrown,
+  [IconName.FROWN]: faFrown,
+  [IconName.GITHUB]: faGithub,
+  [IconName.HEAD_PHONE]: faHeadphonesSimple,
   // [IconName.IMAGE]: faImage,
   // [IconName.LOCK]: faLock,
-  // [IconName.LOG_OUT]: faSignOutAlt,
+  [IconName.LOG_OUT]: faSignOutAlt,
   // [IconName.SHARE_ALTERNATE]: faShareAlt,
   // [IconName.SPINNER]: faCircleNotch,
+  [IconName.SPRINT]: faPersonRunning,
+  [IconName.STATISTICS]: faChartColumn,
   // [IconName.THUMBS_UP]: faThumbsUp,
   // [IconName.THUMBS_DOWN]: faThumbsDown,
   // [IconName.USER]: faUser,
-  // [IconName.USER_CIRCLE]: faUserCircle
+  [IconName.USER_CIRCLE]: faUserCircle
 };
 
 export { iconNameToSvgIcon };

@@ -11,9 +11,7 @@ const PublicRoute = ({ component: Component, ...rest }) => {
 
   const hasUser = Boolean(user);
 
-  return hasUser
-    ? <Navigate to={{ pathname: AppRoute.ROOT, state: { from: rest.location } }} />
-    : <Component {...rest} />;
+  return  <Component {...rest} />;
 };
 
 PublicRoute.propTypes = {
