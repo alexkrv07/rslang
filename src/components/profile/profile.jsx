@@ -21,7 +21,7 @@ const Profile = () => {
       <Input
         iconName={IconName.USER}
         placeholder="Username"
-        value={user.username}
+        value={user.name}
         disabled
       />
       <Input

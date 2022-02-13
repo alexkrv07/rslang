@@ -1,4 +1,6 @@
-import { useCallback, useDispatch, useLocation } from '../../hooks/hooks';
+import { useCallback, useDispatch, useLocation, useSelector } from '../../hooks/hooks';
+import {  Navigate } from "react-router";
+// import { useHistory } from "react-router-dom";
 import { AppRoute } from '../../common/enums/enums';
 import { profileActionCreator } from '../../store/actions';
 import { Image } from '..//common/common';
@@ -8,6 +10,12 @@ import styles from './styles.module.scss';
 const Login = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+  const { isRedirect } = useSelector(state => ({
+    isRedirect: state.profile.isRedirect
+  }));
+
+  // const history = useHistory();
+
 
   const handleLogin = useCallback(
     loginPayload => dispatch(profileActionCreator.login(loginPayload)),
@@ -32,6 +40,11 @@ const Login = () => {
       }
     }
   };
+
+  if (isRedirect) {
+    return < Navigate to='/' />
+  }
+
 
   return (
     <div className={styles.login}>

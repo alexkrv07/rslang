@@ -8,10 +8,9 @@ const login = createAsyncThunk(
   ActionType.LOG_IN,
   async (request, { extra: { services } }) => {
     const { userId, name, token } = await services.auth.login(request);
-
+    const email = request.email;
     services.storage.setItem(StorageKey.TOKEN, token);
-
-    return { userId, name, token } ;
+    return { userId, name, token, email} ;
   }
 );
 

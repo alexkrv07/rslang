@@ -15,7 +15,8 @@ const http = new Http({
 });
 
 const auth = new Auth({
-  apiPath: ENV.API_PATH,
+  // apiPath: ENV.API_PATH,
+  apiPath: 'https://rslang-alexkrv07.herokuapp.com',
   http
 });
 

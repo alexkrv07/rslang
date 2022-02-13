@@ -53,17 +53,19 @@ const Routing = () => {
         <Header user={user} onUserLogout={handleUserLogout} />
       </header>
       <main className="main">
-        <h1 className="visually-hidden">
-          RSLang
-        </h1>
-        <Routes>
-          <Route path={AppRoute.LOGIN} element={<PublicRoute component={SignPage} />} />
-          <Route path={AppRoute.REGISTRATION} element={<PublicRoute component={SignPage} />} />
-          <Route path={AppRoute.ROOT} element={<PublicRoute component={AboutPage} />} />
-          <Route path={AppRoute.PROFILE} element={<PrivateRoute component={ProfilePage} />} />
-          {/* <Route path={AppRoute.SHARE_$POSTHASH} element={<PrivateRoute component={SharedPostPage} />} /> */}
-          <Route path={AppRoute.ANY} element={<NotFoundPage />} />
-        </Routes>
+        <div className="container">
+          <h1 className="visually-hidden">
+            RSLang
+          </h1>
+          <Routes>
+            <Route path={AppRoute.LOGIN} element={<PublicRoute component={SignPage} />} />
+            <Route path={AppRoute.REGISTRATION} element={<PublicRoute component={SignPage} />} />
+            <Route path={AppRoute.ROOT} element={<PublicRoute component={AboutPage} />} />
+            <Route path={AppRoute.PROFILE} element={<PrivateRoute component={ProfilePage} />} />
+            {/* <Route path={AppRoute.SHARE_$POSTHASH} element={<PrivateRoute component={SharedPostPage} />} /> */}
+            <Route path={AppRoute.ANY} element={<NotFoundPage />} />
+          </Routes>
+        </div>
       </main>
       <footer className={styles.footer}>
         <Footer/>

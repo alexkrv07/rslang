@@ -2,7 +2,8 @@ import { createReducer, isAnyOf } from '@reduxjs/toolkit';
 import * as profileActions from './actions';
 
 const initialState = {
-  user: null
+  user: null,
+  isRedirect: false
 };
 
 const reducer = createReducer(initialState, builder => {
@@ -16,6 +17,7 @@ const reducer = createReducer(initialState, builder => {
       ),
       (state, action) => {
         state.user = action.payload;
+        state.isRedirect = true;
       }
     )
     .addMatcher(
