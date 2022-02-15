@@ -11,12 +11,16 @@ import {
   // faImage,
   // faLock,
   faPersonRunning,
+  faPlay,
   // faShareAlt,
   faSignOutAlt,
+  faStop,
   // faThumbsDown,
   // faThumbsUp,
   // faUser,
-  faUserCircle
+  faUserCircle,
+
+
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -38,10 +42,12 @@ const iconNameToSvgIcon = {
   // [IconName.IMAGE]: faImage,
   // [IconName.LOCK]: faLock,
   [IconName.LOG_OUT]: faSignOutAlt,
+  [IconName.PLAY]: faPlay,
   // [IconName.SHARE_ALTERNATE]: faShareAlt,
   // [IconName.SPINNER]: faCircleNotch,
   [IconName.SPRINT]: faPersonRunning,
   [IconName.STATISTICS]: faChartColumn,
+  [IconName.STOP]: faStop,
   // [IconName.THUMBS_UP]: faThumbsUp,
   // [IconName.THUMBS_DOWN]: faThumbsDown,
   // [IconName.USER]: faUser,

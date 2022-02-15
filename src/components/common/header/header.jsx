@@ -8,48 +8,35 @@ import styles from './styles.module.scss';
 
 const Header = ({ user, onUserLogout }) => (
   <div className={styles.headerWrp}>
-    {/* {user && (
-      <NavLink to={AppRoute.ROOT}>
-        <div className={styles.userWrapper}>
-          <Image
-            isCircular
-            width="45"
-            height="45"
-            src={user.image?.link ?? DEFAULT_USER_AVATAR}
-            alt="user avatar"
-          />
-          {' '}
-          {user.username}
-        </div>
-      </NavLink>
-    )} */}
-    <NavLink to={AppRoute.ROOT} className={styles.menuBtn}>
-      RSLang
+    <NavLink to={AppRoute.ROOT} className={`${styles.menuBtn} ${styles.logo}`}>
+      RS Lang
     </NavLink>
     <nav className={styles.nav}>
       <ul className={styles.headerMenu}>
         <li className={styles.menuItem}>
-          <NavLink to={AppRoute.BOOK} className={styles.menuBtn}>
-            <Icon name={IconName.BOOK_OPEN} size={IconSize.LARGE} />
+          <NavLink to={AppRoute.BOOK}
+            className={({ isActive }) => (isActive ? `${styles.menuBtn} ${styles.active}` : `${styles.menuBtn}`)}
+            className={styles.menuBtn}>
+            <Icon name={IconName.BOOK_OPEN} size={IconSize.SM} className={styles.menuIcon}/>
             Book
           </NavLink>
         </li>
         <li className={styles.menuItem}>
           <NavLink to={AppRoute.AUDIO_CALL} className={styles.menuBtn}>
-            <Icon name={IconName.HEAD_PHONE} size={IconSize.LARGE} />
+            <Icon name={IconName.HEAD_PHONE} size={IconSize.SM} className={styles.menuIcon}/>
             Audio Call
           </NavLink>
         </li>
         <li className={styles.menuItem}>
           <NavLink to={AppRoute.SPRINT} className={styles.menuBtn}>
-            <Icon name={IconName.SPRINT} size={IconSize.LARGE} />
+            <Icon name={IconName.SPRINT} size={IconSize.SM} className={styles.menuIcon}/>
             Sprint
           </NavLink>
         </li>
         {user && (
         <li className={styles.menuItem}>
             <NavLink to={AppRoute.STATISTICS} className={styles.menuBtn}>
-              <Icon name={IconName.STATISTICS} size={IconSize.LARGE} />
+              <Icon name={IconName.STATISTICS} size={IconSize.SM} className={styles.menuIcon}/>
               Statistics
             </NavLink>
           </li>

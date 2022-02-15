@@ -1,6 +1,5 @@
 import { useCallback, useDispatch, useLocation, useSelector } from '../../hooks/hooks';
 import {  Navigate } from "react-router";
-// import { useHistory } from "react-router-dom";
 import { AppRoute } from '../../common/enums/enums';
 import { profileActionCreator } from '../../store/actions';
 import { Image } from '..//common/common';
@@ -10,12 +9,11 @@ import styles from './styles.module.scss';
 const Login = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  const { isRedirect } = useSelector(state => ({
-    isRedirect: state.profile.isRedirect
+  const { user } = useSelector(state => ({
+    user: state.profile.user
   }));
 
-  // const history = useHistory();
-
+  const hasUser = Boolean(user);
 
   const handleLogin = useCallback(
     loginPayload => dispatch(profileActionCreator.login(loginPayload)),
@@ -41,7 +39,7 @@ const Login = () => {
     }
   };
 
-  if (isRedirect) {
+  if (hasUser) {
     return < Navigate to='/' />
   }
 

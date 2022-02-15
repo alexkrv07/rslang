@@ -1,0 +1,110 @@
+@import '../../styles/colors';
+
+
+.title,
+.subTitle {
+  margin-top: 50px;
+  text-align: center;
+  color: $yellow-light;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.subTitle {
+  font-size: 20px;
+}
+
+.text {
+  font-size: 16px;
+  text-indent: 20px;
+  color: $yellow-light;
+  text-align: center;
+  & span {
+    color: $yellow-dark;
+    font-style: italic;
+  }
+}
+
+.listGame {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.itemGame {
+  text-align: center;
+  cursor: pointer;
+  transition: .3s;
+  &:hover {
+    transform: scale(.97);
+  }
+}
+
+.itemGameLink {
+  transition: .3s;
+  border: 1px solid #fff;
+  &:hover {
+    transform: scale(.97);
+  }
+}
+
+.itemGameTitle {
+  color: $pink;
+  font-size: 18px;
+}
+
+.itemGameDescr,
+.teamText {
+  font-size: 16px;
+  color: $yellow-light;
+}
+
+.aboutTeam {
+  padding-bottom: 50px;
+}
+
+.teamWrp {
+  display: flex;
+  gap: 50px;
+}
+
+.teamImg {
+  width: 220px;
+}
+
+.teamDescr {
+  width: fit-content;
+}
+
+.teamTitle {
+  font-size: 18px;
+  color: $yellow-dark;
+  & span {
+    font-size: 14px;
+    font-style: italic;
+  }
+}
+
+.menuBtn {
+  color: $yellow-light;
+  font-size: 14px;
+  font-style: italic;
+  padding: 0 10px;
+  transition: .3s;
+
+  &.active {
+    color: $yellow-dark;
+  }
+
+  &:hover {
+    color: $yellow-dark !important;
+  }
+}
+
+.menuIcon {
+  margin-right: 5px;
+}

@@ -1,6 +1,7 @@
 import { ENV } from '../common/enums/enums';
 import { Http } from './http/http.service';
 import { Auth } from './auth/auth.service';
+import { BASE_URL } from '../common/constants/constants';
 // import { Comment } from './comment/comment.service';
 // import { Image } from './image/image.service';
 // import { Post } from './post/post.service';
@@ -16,7 +17,7 @@ const http = new Http({
 
 const auth = new Auth({
   // apiPath: ENV.API_PATH,
-  apiPath: 'https://rslang-alexkrv07.herokuapp.com',
+  apiPath: BASE_URL,
   http
 });
 

@@ -1,3 +1,5 @@
+@import '../styles/colors';
+
 .header {
   z-index: 4;
 
@@ -5,7 +7,7 @@
   top: 0;
 
   width: 100%;
-  background-color: white;
+  background-color: $blue-dark;
   flex: 0 0 auto;
 }
 
@@ -16,16 +18,31 @@
   bottom: 0;
 
   width: 100%;
-  background-color: white;
+  background-color: $blue-dark;
   flex: 0 0 auto;
 }
 
 .main {
-  
+  flex: 1 0 auto;
+  height: 100%;
+  background-color: $blue;
 }
 
 .container {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

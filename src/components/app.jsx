@@ -52,9 +52,9 @@ const Routing = () => {
       <header className={styles.header}>
         <Header user={user} onUserLogout={handleUserLogout} />
       </header>
-      <main className="main">
-        <div className="container">
-          <h1 className="visually-hidden">
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <h1 className={styles.visuallyHidden}>
             RSLang
           </h1>
           <Routes>

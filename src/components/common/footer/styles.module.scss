@@ -1,58 +1,37 @@
+@import '../../../styles/colors';
+
 .footerWrp {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-grow: 1;
-  background-color: white;
   padding: 1em 2em 1em;
 }
 
 .footerCopyright {
-  font-size: 0.8rem;
+  font-size: 18px;
+  color: $yellow-light;
 }
 
 .menuBtn {
-  color: gray;
+  color: $yellow-light;
+  font-size: 18px;
+  transition: .3s;
   &:hover {
-    color: black !important;
+    color: $yellow-dark !important;
+    .menuImageBtn {
+      filter: invert(59%) sepia(75%) saturate(2758%) hue-rotate(22deg) brightness(104%) contrast(101%);
+    }
   }
 }
 
+.menuImageBtn {
+  filter: invert(84%) sepia(51%) saturate(527%) hue-rotate(3deg) brightness(110%) contrast(104%);
+}
 
-
-
-
-
-
-
-
-
-
-
-// .page-footer {
-//   z-index: 1;
-
-//   position: sticky;
-//   bottom: 0;
-
-//   width: 100%;
-
-//   background-color: var(--color-secondary);
-
-//   border-top: 1px solid var(--color-primary);
-// }
-
-// .page-footer__quote-wrapper {
-//   max-width: 1170px;
-//   margin: 0 auto;
-//   padding: 20px 15px;
-
-//   text-align: center;
-//   font-size: 20px;
-// }
-
-// .page-footer__quote {
-//   font-style: italic;
-// }
+.menuIcon {
+  margin-right: 5px;
+}

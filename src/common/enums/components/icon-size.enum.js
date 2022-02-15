@@ -1,5 +1,6 @@
 const IconSize = {
-  LARGE: 'lg'
+  LARGE: 'lg',
+  SM: 'sm'
 };
 
 export { IconSize };

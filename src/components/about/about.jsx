@@ -1,5 +1,6 @@
 import styles from './styles.module.scss';
-import {Image, Icon }from '../common/common';
+import {Image, Icon, NavLink }from '../common/common';
+import AVATAR from './images/avatar.jpg';
 import{DEFAULT_USER_AVATAR } from '../../common/constants/constants';
 import { GITHUB_OWNER_URL } from '../../common/constants/constants';
 import { IconName, IconSize, ButtonType, AppRoute } from '../../common/enums/enums';
@@ -10,16 +11,16 @@ const AboutPage = () => (
       <h2 className={styles.title}>
         Welcome to RS Lang
       </h2>
-      <p>
+      <p className={styles.text}>
         An application for the effective study of foreign words.<br/>
-        Register to use all the features.
+        <span>Register to use all the features</span>.
       </p>
       <h3 className={styles.subTitle}>Textbook</h3>
-      <p>
+      <p className={styles.text}>
         The collection contains 3600 commonly used English words that you need to organize your learning. The words in the collection are sorted from the simplest and most famous to the most difficult. The whole collection is divided into six sections, each section has 30 pages, each page has 20 words to study.
       </p>
       <h3 className={styles.subTitle}>Games</h3>
-      <p>
+      <p className={styles.text}>
         Learn while playing.
       </p>
       <ul className={styles.listGame}>
@@ -41,28 +42,29 @@ const AboutPage = () => (
       <h2 className={styles.title}>
         Our team
       </h2>
-      <div>
-        <div>
-          <Image
-            isCircular
-            width="350"
-            height="350"
-            src={DEFAULT_USER_AVATAR}
+      <div className={styles.teamWrp}>
+        {/* <div className={styles.teamImg}> */}
+          <Image className={styles.teamImg}
+            // isCircular
+            isCentered
+            width="219"
+            height="211"
+            src={AVATAR}
             alt="author avatar"
           />
-        </div>
-        <div>
-          <h4>
+        {/* </div> */}
+        <div className={styles.teamDescr}>
+          <h4 className={styles.teamTitle}>
             Oleksii Korovushkin<br/>
             <span>
               Frontend developer
             </span>
           </h4>
           <a href={GITHUB_OWNER_URL} className={styles.menuBtn} target="_blank">
-            <Icon name={IconName.GITHUB} size={IconSize.LARGE} />
+            <Icon name={IconName.GITHUB} size={IconSize.SM} className={styles.menuIcon}/>
               alexkrv07
           </a>
-          <p>Did basic project settings, initial layout, redux setup, router setup, login form, part of the TextBook page, "Audio Challenge" game, "Savannah" game, backend</p>
+          <p className={styles.teamText}>Did basic project settings, initial layout, redux setup, router setup, login form, part of the TextBook page, "Audio Challenge" game, "Savannah" game, backend</p>
         </div>
       </div>
     </section>

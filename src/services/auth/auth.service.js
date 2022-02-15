@@ -7,7 +7,7 @@ class Auth {
   }
 
   login(payload) {
-    return this._http.load(`${this._apiPath}/signin`, {
+    return this._http.load(`${this._apiPath}signin`, {
       method: HttpMethod.POST,
       contentType: ContentType.JSON,
       accept: ContentType.JSON,
@@ -17,7 +17,7 @@ class Auth {
   }
 
   registration(payload) {
-    return this._http.load(`${this._apiPath}/users`, {
+    return this._http.load(`${this._apiPath}users`, {
       method: HttpMethod.POST,
       contentType: ContentType.JSON,
       accept: ContentType.JSON,
