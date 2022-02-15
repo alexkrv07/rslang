@@ -1,6 +1,7 @@
 import { useSelector } from '../../../../hooks/hooks';
 import { BASE_URL } from '../../../../common/constants/constants';
 import { Button, Image,  } from '../../../common/common';
+import { ImageSize, ButtonType } from '../../../../common/enums/enums';
 import styles from './styles.module.scss';
 
 const WordCard = ({word}) => {
@@ -15,7 +16,10 @@ const WordCard = ({word}) => {
   ];
 
   const hasUser = Boolean(user);
-
+  const handlePlayAudio = () => {};
+  const handleStopPlayAudio = () => {};
+  const handleDifficultBtn = () => {};
+  const handleLearnedBtn = () => {};
 
   return (
     <li className={styles.wordCard}>
@@ -33,13 +37,13 @@ const WordCard = ({word}) => {
           {`${word.word} - ${word.transcription} - ${word.wordTranslate}`}
           <Button
               className={styles.wordCardPlayAudioBtn}
-              onClick={}
+              onClick={handlePlayAudio}
               type={ButtonType.BUTTON}
               isBasic
           />
           <Button
-            className={styles.wordCardPlayAudioBtn}
-            onClick={}
+            className={styles.wordCardStopPlayAudioBtn}
+            onClick={handleStopPlayAudio}
             type={ButtonType.BUTTON}
             isBasic
           />
@@ -50,29 +54,31 @@ const WordCard = ({word}) => {
           <div className={styles.wordCardBtnWrp}>
             <Button
               className={styles.wordCardDifficultBtn}
-              onClick={}
+              onClick={handleDifficultBtn}
               type={ButtonType.BUTTON}
               isBasic
             >
               Difficult
-            </Button> 
+            </Button>
             <Button
               className={styles.wordCardLearnedtBtn}
-              onClick={}
+              onClick={handleLearnedBtn}
               type={ButtonType.BUTTON}
               isBasic
             >
               Learned
-            </Button> 
+            </Button>
           </div>
         )}
 
       </div>
     </li>
-  )
+  )}
+
+  export default WordCard;
 
 
-  {
+  // {
     // "id": "string",
     // "group": 0,
     // "page": 0,
@@ -87,4 +93,4 @@ const WordCard = ({word}) => {
     // "wordTranslate": "string",
     // "textMeaningTranslate": "string",
     // "textExampleTranslate": "string"
-  }
+  // }

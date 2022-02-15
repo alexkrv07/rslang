@@ -1,11 +1,13 @@
-import { useCallback, useDispatch, useSelector } from '../../hooks/hooks';
+import { useCallback, useDispatch, useEffect, useSelector } from '../../hooks/hooks';
 import { textbookActionCreator } from '../../store/actions';
 import { GROUP_ARRAY, PAGE_ARRAY } from '../../common/constants/constants';
 import { GroupItem, PageItem, WordList } from './components/components';
+import { Button, Icon, NavLink } from '../common/common';
+import { IconSize, ButtonType, IconName, AppRoute } from '../../common/enums/enums';
 
 import styles from './styles.module.scss';
 
-const TextBook = () => {
+const TextBookPage = () => {
   const dispatch = useDispatch();
   const { user, wordList, currentGroup, currentPage } = useSelector(state => ({
     user: state.profile.user
@@ -13,7 +15,7 @@ const TextBook = () => {
   const hasUser = Boolean(user);
 
   useEffect(() => {
-    dispatch(fetchMessages());
+    // dispatch(fetchMessages());
   }, [dispatch]);
 
   const onChangePage = useCallback(
@@ -31,12 +33,12 @@ const TextBook = () => {
     [dispatch]
   );
 
-  const pageItems = PAGE_ARRAY.map((pageNumber, index) => {
-    return <PageItem pageNumber={pageNumber} currentPage={currentPage} onChangePage={onChangePage}/>
+  const groupItems = GROUP_ARRAY.map((groupNumber, index) => {
+    return <PageItem pageNumber={groupNumber} currentPage={currentGroup} onChangePage={onChangeGroup} key={index}/>
   });
 
   const pageItems = PAGE_ARRAY.map((pageNumber, index) => {
-    return <PageItem pageNumber={pageNumber} currentPage={currentPage} onChangePage={onChangePage}/>
+    return <PageItem pageNumber={pageNumber} currentPage={currentPage} onChangePage={onChangePage} key={index}/>
   });
 
 
@@ -55,7 +57,7 @@ const TextBook = () => {
                   type={ButtonType.BUTTON}
                   // iconName={IconName.LOG_OUT}
                   // iconSize={IconSize.LARGE}
-                  isBasic               
+                  isBasic
                 >
                   Difficult words
                 </Button>
@@ -92,4 +94,4 @@ const TextBook = () => {
   );
 };
 
-export default TextBook;
+export default TextBookPage;

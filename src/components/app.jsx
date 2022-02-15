@@ -15,6 +15,7 @@ import SignPage from './sign/sign';
 import NotFoundPage from './not-found/not-found';
 import AboutPage from './about/about';
 import ProfilePage from './profile/profile';
+import TextBookPage from './text-book/text-book';
 
 import styles from './styles.module.scss';
 
@@ -62,7 +63,7 @@ const Routing = () => {
             <Route path={AppRoute.REGISTRATION} element={<PublicRoute component={SignPage} />} />
             <Route path={AppRoute.ROOT} element={<PublicRoute component={AboutPage} />} />
             <Route path={AppRoute.PROFILE} element={<PrivateRoute component={ProfilePage} />} />
-            {/* <Route path={AppRoute.SHARE_$POSTHASH} element={<PrivateRoute component={SharedPostPage} />} /> */}
+            <Route path={AppRoute.SHARE_$POSTHASH} element={<PublicRoute component={TextBookPage} />} />
             <Route path={AppRoute.ANY} element={<NotFoundPage />} />
           </Routes>
         </div>
