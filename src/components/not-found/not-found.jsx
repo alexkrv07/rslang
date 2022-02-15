@@ -7,7 +7,7 @@ const NotFoundPage = () => (
     <Icon size={IconSize.LARGE} name={IconName.FROWN} />
     <span className={styles.code}>404 Not Found</span>
     Go to
-    <NavLink to={AppRoute.ROOT}> Home </NavLink>
+    <NavLink to={AppRoute.ROOT} className={styles.link}> Home </NavLink>
     page
   </h2>
 );

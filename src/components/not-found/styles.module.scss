@@ -1,4 +1,7 @@
+@import '../../styles/colors';
+
 .title {
+  color:  $blue-dark;
   padding: 3em 0 0;
   text-align: center;
 }
@@ -7,4 +10,8 @@
   display: block;
   font-size: 1.5em;
   margin: 10px 0 5px;
+}
+
+.link {
+ color:  $pink;
 }
