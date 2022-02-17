@@ -1,5 +1,5 @@
 import { Button } from '../../../common/common';
-import { IconName, IconSize, ButtonType, AppRoute } from '../../../../common/enums/enums';
+import { ButtonType } from '../../../../common/enums/enums';
 
 import styles from './styles.module.scss';
 

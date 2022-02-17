@@ -70,10 +70,12 @@
 .teamWrp {
   display: flex;
   gap: 50px;
+  border-radius: 5px;
 }
 
 .teamImg {
   width: 220px;
+  border-radius: 5px;
 }
 
 .teamDescr {

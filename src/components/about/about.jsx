@@ -1,7 +1,6 @@
 import styles from './styles.module.scss';
 import {Image, Icon, NavLink }from '../common/common';
 import AVATAR from './images/avatar.jpg';
-import{DEFAULT_USER_AVATAR } from '../../common/constants/constants';
 import { GITHUB_OWNER_URL } from '../../common/constants/constants';
 import { IconName, IconSize, ButtonType, AppRoute } from '../../common/enums/enums';
 
@@ -60,7 +59,7 @@ const AboutPage = () => (
               Frontend developer
             </span>
           </h4>
-          <a href={GITHUB_OWNER_URL} className={styles.menuBtn} target="_blank">
+          <a href={GITHUB_OWNER_URL} className={styles.menuBtn} target="_blank"  rel="noreferrer">
             <Icon name={IconName.GITHUB} size={IconSize.SM} className={styles.menuIcon}/>
               alexkrv07
           </a>

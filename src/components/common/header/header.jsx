@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import { IconName, IconSize, ButtonType, AppRoute } from '../../../common/enums/enums';
-import { DEFAULT_USER_AVATAR } from '../../../common/constants/constants';
 import { userType } from '../../../common/prop-types/prop-types';
-import { Button, Icon, Image, NavLink } from '../../common/common';
+import { Button, Icon, NavLink } from '../../common/common';
 
 import styles from './styles.module.scss';
 
@@ -16,7 +15,7 @@ const Header = ({ user, onUserLogout }) => (
         <li className={styles.menuItem}>
           <NavLink to={AppRoute.BOOK}
             className={({ isActive }) => (isActive ? `${styles.menuBtn} ${styles.active}` : `${styles.menuBtn}`)}
-            className={styles.menuBtn}>
+          >
             <Icon name={IconName.BOOK_OPEN} size={IconSize.SM} className={styles.menuIcon}/>
             Book
           </NavLink>

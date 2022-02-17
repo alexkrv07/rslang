@@ -6,7 +6,7 @@ import {
   // faComment,
   // faCopy,
   faFrown,
-  faGear,
+  // faGear,
   faHeadphonesSimple,
   // faImage,
   // faLock,
