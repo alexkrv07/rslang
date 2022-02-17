@@ -1,0 +1,56 @@
+@import '../../styles/colors';
+
+.subTitle,
+.navPage {
+  text-align: center;
+  color: $yellow-light;
+}
+
+.navWrp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navGroupList,
+.navPageList,
+.navGameList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menuItem {
+  margin-right: 10px;
+}
+
+.menuLinkGame {
+  color: $yellow-light;
+  transition: .3s;
+  &:hover {
+    color: $yellow-dark;
+    transform: scale(.95);
+
+  }
+}
+
+.menuLinkGameIcon {
+  margin-right: 5px;
+}
+
+.navGroupBtn {
+  font-weight: 600;
+  background-color: $blue-dark;
+  color: $yellow;
+  &:hover {
+    transform: scale(.95);
+  }
+  &.active {
+    background-color: $yellow;
+    color: $blue-dark;
+  }
+}

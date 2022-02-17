@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import * as services from '../services/services';
-import { profileReducer } from './root-reducer';
+import { profileReducer, textBookReducer } from './root-reducer';
 
 const store = configureStore({
   reducer: {
-    profile: profileReducer
+    profile: profileReducer,
+    textbook: textBookReducer
   },
   middleware: getDefaultMiddleware => (getDefaultMiddleware({
     thunk: {

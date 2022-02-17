@@ -14,7 +14,7 @@ export { default as Message } from './message/message';
 // export { default as Post } from './post/post';
 export { default as PrivateRoute } from './private-route/private-route';
 export { default as PublicRoute } from './public-route/public-route';
-// export { default as Spinner } from './spinner/spinner';
+export { default as Spinner } from './spinner/spinner';
 // export { default as TextArea } from './text-area/text-area';
 export { default as Segment } from './segment/segment';
 // export { default as Checkbox } from './checkbox/checkbox';

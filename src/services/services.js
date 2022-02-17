@@ -2,7 +2,7 @@ import { ENV } from '../common/enums/enums';
 import { Http } from './http/http.service';
 import { Auth } from './auth/auth.service';
 import { BASE_URL } from '../common/constants/constants';
-// import { Comment } from './comment/comment.service';
+import { TextBook } from './text-book/textbook.service';
 // import { Image } from './image/image.service';
 // import { Post } from './post/post.service';
 import { Storage } from './storage/storage.service';
@@ -21,10 +21,10 @@ const auth = new Auth({
   http
 });
 
-// const comment = new Comment({
-//   apiPath: ENV.API_PATH,
-//   http
-// });
+const textBook = new TextBook({
+  apiPath: BASE_URL,
+  http
+});
 
 // const post = new Post({
 //   apiPath: ENV.API_PATH,
@@ -37,4 +37,4 @@ const auth = new Auth({
 // });
 
 // export { http, storage, auth, comment, post, image };
-export { http, storage, auth };
+export { http, storage, auth, textBook };

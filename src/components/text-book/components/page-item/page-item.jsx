@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 const PageItem = ({ pageNumber, currentPage, onChangePage }) => {
   const isActivePage = pageNumber === currentPage;
 
-  const handleChangePage = pageNumber => {
+  const handleChangePage = () => {
     onChangePage(pageNumber);
   };
 
@@ -14,7 +14,7 @@ const PageItem = ({ pageNumber, currentPage, onChangePage }) => {
 
   return (
     <li
-      className={isActivePage ? `${styles.navPageItem} ${styles.active}` : styles.navPageItem}
+      className={isActivePage ? `${styles.navPageItem} ${styles.active}` : `${styles.navPageItem}`}
     >
       <Button
         className={`${styles.menuBtn} ${styles.navPageBtn}`}
@@ -23,7 +23,7 @@ const PageItem = ({ pageNumber, currentPage, onChangePage }) => {
         isDisabled={isActivePage}
         isBasic
       >
-        {`Page ${+pageNumber + 1}`}
+        {`${+pageNumber + 1}`}
       </Button>
     </li>
   );

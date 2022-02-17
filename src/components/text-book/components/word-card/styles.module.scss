@@ -1,0 +1,59 @@
+@import '../../../../styles/colors';
+
+.wordCard {
+  width: 100%;
+  display: flex;
+  background-color: $teal;
+  color: $dark;
+  font-size: 16px;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  gap: 20px;
+  justify-content: flex-start;
+
+}
+
+.wordCardImageWrp {
+  background-color: #fff;
+  width: 25%;
+}
+
+.wordCardImage {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.wordCardContent {
+  width: 70%;
+}
+
+.wordCardMeaning i,
+.wordCardExample b {
+  color: $pink;
+}
+
+.wordCardPlayAudioBtn,
+.wordCardStopPlayAudioBtn {
+  margin-left: 20px;
+  color: $dark;
+  &:hover {
+    transform: scale(.95);
+    // color: $blue-dark;
+  }
+}
+
+.wordCardBtnWrp {
+  margin-top: 10px;
+}
+.wordCardDifficultBtn,
+.wordCardLearnedtBtn {
+  margin-right: 10px;
+  color: $dark;
+  font-weight: 600;
+  &:hover {
+    transform: scale(.95);
+    background-color: $yellow-dark;
+  }
+}

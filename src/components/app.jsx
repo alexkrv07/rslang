@@ -63,7 +63,7 @@ const Routing = () => {
             <Route path={AppRoute.REGISTRATION} element={<PublicRoute component={SignPage} />} />
             <Route path={AppRoute.ROOT} element={<PublicRoute component={AboutPage} />} />
             <Route path={AppRoute.PROFILE} element={<PrivateRoute component={ProfilePage} />} />
-            <Route path={AppRoute.SHARE_$POSTHASH} element={<PublicRoute component={TextBookPage} />} />
+            <Route path={AppRoute.BOOK} element={<PublicRoute component={TextBookPage} />} />
             <Route path={AppRoute.ANY} element={<NotFoundPage />} />
           </Routes>
         </div>

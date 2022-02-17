@@ -1,16 +1,16 @@
 @import '../../../../styles/colors';
 
-.navPageItem .navPageBtn {
+.navGroupItem .navGroupBtn {
   font-weight: 600;
   background-color: $blue-dark;
   color: $yellow;
 }
 
-.navPageItem.active .navPageBtn{
+.navGroupItem.active .navGroupBtn {
   background-color: $yellow;
   color: $blue-dark;
 }
 
-.navPageBtn:hover {
+.navGroupBtn:hover {
   transform: scale(.95);
 }
