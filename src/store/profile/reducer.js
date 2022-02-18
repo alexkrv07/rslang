@@ -13,7 +13,7 @@ const reducer = createReducer(initialState, builder => {
         profileActions.login.fulfilled,
         profileActions.logout.fulfilled,
         profileActions.register.fulfilled,
-        // profileActions.loadCurrentUser.fulfilled
+        profileActions.loadCurrentUser.fulfilled
       ),
       (state, action) => {
         state.user = action.payload;
@@ -25,7 +25,7 @@ const reducer = createReducer(initialState, builder => {
         profileActions.login.rejected,
         profileActions.logout.rejected,
         profileActions.register.rejected,
-        // profileActions.loadCurrentUser.rejected
+        profileActions.loadCurrentUser.rejected
       ),
       state => {
         state.user = null;

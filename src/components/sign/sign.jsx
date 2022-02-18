@@ -2,7 +2,6 @@ import { useCallback, useDispatch, useLocation, useSelector } from '../../hooks/
 import {  Navigate } from "react-router";
 import { AppRoute } from '../../common/enums/enums';
 import { profileActionCreator } from '../../store/actions';
-import { Image } from '..//common/common';
 import { LoginForm, RegistrationForm } from './components/components';
 import styles from './styles.module.scss';
 

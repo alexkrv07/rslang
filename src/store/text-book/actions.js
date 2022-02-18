@@ -1,8 +1,6 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { HttpError } from '../../exceptions/exceptions';
-import { HttpCode, StorageKey, ExceptionMessage } from '../../common/enums/enums';
+import { StatusWord} from '../../common/enums/enums';
 import { ActionType } from './common';
-
 
 const getWordList = createAsyncThunk(
   ActionType.GET_WORD_LIST,
@@ -43,11 +41,45 @@ const stopPlayList = createAction(ActionType.STOP_PLAY_LIST, () => ({
   }
 }));
 
-const addDificultWord = createAction(ActionType.ADD_DIFFICULT_WORD, (wordId) => ({
-}));
+const addDificultWord = createAsyncThunk(
+  ActionType.ADD_DIFFICULT_WORD,
+  async (request, { dispatch, getState, extra: { services } }) => {
+    const {wordId, userId} = request;
+    const payload = {
+      "difficulty": StatusWord.DIFFICULT,
+      "optional": {}
+    }
+    console.log({wordId, userId, payload})
+    const { textbook: {learnedWordList }} = getState();
+    console.log(learnedWordList)
+    if (!learnedWordList.includes(wordId)) {
+      await services.textBook.addDifficultWord({wordId, userId, payload});
+    } else {
+      console.log('add difficult')
+      await services.textBook.updateDifficultWord({wordId, userId, payload});
+    }
+    console.log('userId', userId)
+    return dispatch(getWordListDifficult(userId));
+  }
+);
 
-const addLearnedWord = createAction(ActionType.ADD_LEARNED_WORD, (wordId) => ({
-}));
+const addLearnedWord = createAsyncThunk(
+  ActionType.ADD_DIFFICULT_WORD,
+  async (request, { dispatch, getState, extra: { services } }) => {
+    const {wordId, userId} = request;
+    const payload = {
+      "difficulty": StatusWord.LEARNED,
+      "optional": {}
+    }
+    const { textbook: {difficultWordList} } = getState();
+    if (!difficultWordList.includes(wordId)) {
+      await services.textBook.addDifficultWord({wordId, userId, payload});
+    } else {
+      await services.textBook.updateDifficultWord({wordId, userId, payload});
+    }
+    return dispatch(getWordListDifficult(userId));
+  }
+);
 
 const deleteDificultWord = createAction(ActionType.DELETE_DIFFICULT_WORD, (wordId) => ({
 }));
@@ -55,8 +87,17 @@ const deleteDificultWord = createAction(ActionType.DELETE_DIFFICULT_WORD, (wordI
 const deleteLearnedWord = createAction(ActionType.DELETE_LEARNED_WORD, (wordId) => ({
 }));
 
-const getWordListDifficult = createAction(ActionType.GET_DIFFICULT_WORD_LIST, (wordId) => ({
-}));
+const getWordListDifficult = createAsyncThunk(
+  ActionType.GET_DIFFICULT_WORD_ID_LIST,
+  async (userId, { extra: { services } }) => {
+    console.log(userId)
+    const wordIdList = await services.textBook.getDifficultWordIdList(userId);
+    const difficultWordList = wordIdList.filter(wordId => wordId.difficulty === StatusWord.DIFFICULT ).map(wordId => wordId.wordId);
+    const learnedWordList = wordIdList.filter(wordId => wordId.difficulty === StatusWord.LEARNED ).map(wordId => wordId.wordId);
+
+    return { difficultWordList, learnedWordList };
+  }
+);
 
 
 

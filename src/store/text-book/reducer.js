@@ -1,4 +1,4 @@
-import { createReducer, isAnyOf } from '@reduxjs/toolkit';
+import { createReducer } from '@reduxjs/toolkit';
 import * as textbookActions from './actions';
 
 const initialState = {
@@ -25,6 +25,10 @@ const reducer = createReducer(initialState, builder => {
   builder.addCase(textbookActions.getWordList.pending, state => {
     state.isLoading = true;
     state.isPlay = false;
+    state.wordPlayList = {
+      currentWordId: null,
+      wordPlayList: []
+    }
   });
   builder.addCase(textbookActions.setCurentPage, (state, action) => {
     const { currentPage } = action.payload;
@@ -50,6 +54,15 @@ const reducer = createReducer(initialState, builder => {
       wordPlayList: []
     }
     state.isPlay = isPlay;
+  });
+  builder.addCase(textbookActions.getWordListDifficult.fulfilled, (state, action) => {
+    const { difficultWordList, learnedWordList} = action.payload
+    state.difficultWordList = difficultWordList;
+    state.learnedWordList = learnedWordList;
+    state.isLoading = false;
+  });
+  builder.addCase(textbookActions.getWordListDifficult.pending, state => {
+    state.isLoading = true;
   });
 });
 

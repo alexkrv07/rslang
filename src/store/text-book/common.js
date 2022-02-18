@@ -3,6 +3,7 @@ const ActionType = {
   SET_GROUP: 'textbook/set-group',
   GET_WORD_LIST: 'textbook/get-word-list',
   GET_DIFFICULT_WORD_LIST: 'textbook/get-difficult-word-list',
+  GET_DIFFICULT_WORD_ID_LIST: 'textbook/get-difficult-word-id-list',
   GET_LEARNED_WORD_LIST: 'textbook/get-learned-word-list',
   ADD_DIFFICULT_WORD: 'textbook/add-difficult-word',
   ADD_LEARNED_WORD: 'textbook/add-learned-word',

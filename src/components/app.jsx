@@ -9,13 +9,14 @@ import {
   PrivateRoute,
   PublicRoute,
   Footer,
-  // Notifications
 } from './common/common';
 import SignPage from './sign/sign';
 import NotFoundPage from './not-found/not-found';
 import AboutPage from './about/about';
 import ProfilePage from './profile/profile';
 import TextBookPage from './text-book/text-book';
+import AudioCallPage from './audio-call/audio-call';
+import SprintPage from './sprint/sprint';
 
 import styles from './styles.module.scss';
 
@@ -24,24 +25,21 @@ const Routing = () => {
     user: state.profile.user
   }));
   const dispatch = useDispatch();
-// const user = 'Alex';
 
   const hasToken = Boolean(storage.getItem(StorageKey.TOKEN));
   const hasUser = Boolean(user);
-
-  // const handlePostApply = useCallback(id => (
-  //   dispatch(threadActionCreator.applyPost(id))
-  // ), [dispatch]);
 
   const handleUserLogout = useCallback(() => (
     dispatch(profileActionCreator.logout())
   ), [dispatch]);
 
   useEffect(() => {
-    if (hasToken) {
-      dispatch(profileActionCreator.loadCurrentUser());
+    if (!hasUser && hasToken) {
+      const email = storage.getItem(StorageKey.EMAIL);
+      const password = storage.getItem(StorageKey.PASSWORD);
+      dispatch(profileActionCreator.login({email, password}));
     }
-  }, [hasToken, dispatch]);
+  }, [user, dispatch]);
 
   // if (!hasUser && hasToken) {
   //   return <Spinner isOverflow />;
@@ -50,6 +48,10 @@ const Routing = () => {
   return (
 
     <>
+
+      {(!hasUser && hasToken) && (
+        <Spinner isOverflow />
+      )}
       <header className={styles.header}>
         <Header user={user} onUserLogout={handleUserLogout} />
       </header>
@@ -64,6 +66,8 @@ const Routing = () => {
             <Route path={AppRoute.ROOT} element={<PublicRoute component={AboutPage} />} />
             <Route path={AppRoute.PROFILE} element={<PrivateRoute component={ProfilePage} />} />
             <Route path={AppRoute.BOOK} element={<PublicRoute component={TextBookPage} />} />
+            <Route path={AppRoute.AUDIO_CALL} element={<PublicRoute component={AudioCallPage} />} />
+            <Route path={AppRoute.SPRINT} element={<PublicRoute component={SprintPage} />} />
             <Route path={AppRoute.ANY} element={<NotFoundPage />} />
           </Routes>
         </div>
@@ -71,8 +75,6 @@ const Routing = () => {
       <footer className={styles.footer}>
         <Footer/>
       </footer>
-      {/* <Notifications onPostApply={handlePostApply} user={user} /> */}
-
     </>
   );
 };

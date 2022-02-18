@@ -3,6 +3,7 @@ import { textbookActionCreator } from '../../store/actions';
 import { GROUP_ARRAY, PAGE_ARRAY } from '../../common/constants/constants';
 import { GroupItem, PageItem, WordList } from './components/components';
 import { Button, Icon, NavLink, Spinner } from '../common/common';
+import { playAudio, pauseAudio } from '../../helpers/helpers';
 import { IconSize, ButtonType, IconName, AppRoute } from '../../common/enums/enums';
 
 import styles from './styles.module.scss';
@@ -15,7 +16,6 @@ const TextBookPage = () => {
     currentGroup,
     currentPage,
     isLoading,
-    isPlay,
     wordPlayList,
     difficultWordList,
     learnedWordList,
@@ -26,18 +26,34 @@ const TextBookPage = () => {
     currentGroup: state.textbook.currentGroup,
     currentPage: state.textbook.currentPage,
     isLoading: state.textbook.isLoading,
-    isPlay: state.textbook.isPlay,
     wordPlayList: state.textbook.wordPlayList,
     difficultWordList: state.textbook.difficultWordList,
     learnedWordList: state.textbook.learnedWordList,
     typeShowWordList: state.textbook.typeShowWordList
   }));
   const hasUser = Boolean(user);
-  const currentPlayWordId = wordPlayList.currentPlayWordId;
+  const currentPlayWordId = wordPlayList.currentWordId;
+  let userId;
 
    useEffect(() => {
     dispatch(textbookActionCreator.getWordList({currentPage, currentGroup}));
+
   }, [dispatch, currentGroup, currentPage]);
+
+  useEffect(() => {
+    if (hasUser) {
+      userId = user.userId;
+      dispatch(textbookActionCreator.getWordListDifficult(userId));
+    }
+  }, [dispatch, user]);
+
+  const isPlay = Boolean(wordPlayList.currentWordId);
+
+  if (isPlay) {
+    playAudio(wordPlayList.wordPlayList);
+  } else {
+    pauseAudio();
+  }
 
   const onChangePage = useCallback(
     pageNumber => dispatch(textbookActionCreator.setCurentPage(pageNumber)),
@@ -93,13 +109,13 @@ const TextBookPage = () => {
         <nav className={styles.navGame}>
           <ul className={styles.navGameList}>
             <li className={styles.menuItem}>
-              <NavLink to={AppRoute.AUDIO_CALL} className={styles.menuLinkGame}>
+              <NavLink to={`/${AppRoute.AUDIO_CALL}`} className={styles.menuLinkGame}>
                 <Icon name={IconName.HEAD_PHONE} size={IconSize.LARGE} className={styles.menuLinkGameIcon}/>
                 Audio Call
               </NavLink>
             </li>
             <li className={styles.menuItem}>
-              <NavLink to={AppRoute.SPRINT} className={styles.menuLinkGame}>
+              <NavLink to={`/${AppRoute.SPRINT}`} className={styles.menuLinkGame}>
                 <Icon name={IconName.SPRINT} size={IconSize.LARGE} className={styles.menuLinkGameIcon}/>
                 Sprint
               </NavLink>

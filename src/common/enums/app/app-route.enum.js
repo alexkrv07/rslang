@@ -10,7 +10,6 @@ const AppRoute = {
   SPRINT: 'games/sprint',
   STATISTICS: 'statistics',
 
-  // SHARE_$POSTHASH: '/share/:postHash'
 };
 
 export { AppRoute };

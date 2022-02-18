@@ -2,7 +2,7 @@ import { useCallback, useDispatch, useSelector } from '../../../../hooks/hooks';
 import { textbookActionCreator } from '../../../../store/actions';
 import { BASE_URL } from '../../../../common/constants/constants';
 import { Button, Image,  } from '../../../common/common';
-import { ImageSize, ButtonType, IconName, IconSize } from '../../../../common/enums/enums';
+import {  ButtonType, IconName, IconSize, StatusWordList } from '../../../../common/enums/enums';
 import styles from './styles.module.scss';
 
 const WordCard = ({
@@ -16,9 +16,15 @@ const WordCard = ({
   const { user } = useSelector(state => ({
     user: state.profile.user,
   }));
+  const wordId = word.id;
 
-  const isLearnedWordList = typeShowWordList === 'learnedWordList';
-  const isDifficultList = typeShowWordList === 'difficultWordList'
+  let userId;
+  if (user)  {
+    userId= user.userId;
+  }
+
+  const isLearnedWordList = typeShowWordList === StatusWordList.LEARNED_WORD_LIST;
+  const isDifficultList = typeShowWordList === StatusWordList.DIFFICULT_WORD_LIST;
 
   const isPlay = word.id === currentPlayWordId;
 
@@ -35,26 +41,21 @@ const WordCard = ({
 
   const hasUser = Boolean(user);
 
-  const handlePlayAudio = useCallback(
-    () => dispatch(textbookActionCreator.setPlayList(wordPlayList)),
-    [dispatch]
-  );
+  const handlePlayAudio = useCallback(() => (
+    dispatch(textbookActionCreator.setPlayList(wordPlayList))
+  ), [dispatch]);
 
   const handleStopPlayAudio = useCallback(
     () => dispatch(textbookActionCreator.stopPlayList()),
     [dispatch]
   );
-  const handleDifficultBtn = useCallback(
-    () => dispatch(textbookActionCreator.addDificultWord(word.id)),
-    [dispatch]
-  );
-  const handleLearnedBtn = useCallback(
-    () => dispatch(textbookActionCreator.addLearnedWord(word.id)),
-    [dispatch]
-  );
+  const handleDifficultBtn = () => dispatch(textbookActionCreator.addDificultWord({wordId, userId}));
+
+
+  const handleLearnedBtn = () => dispatch(textbookActionCreator.addLearnedWord({wordId, userId}));
 
   const handleNotDifficultBtn = useCallback(
-    () => dispatch(textbookActionCreator.deleteDificultWord(word.id)),
+    () => dispatch(textbookActionCreator.deleteDificultWord({wordId, userId})),
     [dispatch]
   );
 
@@ -108,7 +109,8 @@ const WordCard = ({
           <div className={styles.wordCardBtnWrp}>
             { !isDifficultList && (
               <Button
-                className={styles.wordCardDifficultBtn}
+
+                className={isDifficultWord ? `${styles.wordCardDifficultBtn} ${styles.active}` : `${styles.wordCardDifficultBtn}`}
                 onClick={handleDifficultBtn}
                 type={ButtonType.BUTTON}
                 isBasic
@@ -129,7 +131,7 @@ const WordCard = ({
             )}
 
             <Button
-              className={styles.wordCardLearnedtBtn}
+              className={isLearnedWord ? `${styles.wordCardLearnedtBtn} ${styles.active}` : `${styles.wordCardLearnedtBtn}`}
               onClick={handleLearnedBtn}
               type={ButtonType.BUTTON}
               isBasic

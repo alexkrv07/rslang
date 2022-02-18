@@ -1,8 +1,8 @@
 import styles from './styles.module.scss';
-import {Image, Icon, NavLink }from '../common/common';
+import {Image, Icon }from '../common/common';
 import AVATAR from './images/avatar.jpg';
 import { GITHUB_OWNER_URL } from '../../common/constants/constants';
-import { IconName, IconSize, ButtonType, AppRoute } from '../../common/enums/enums';
+import { IconName, IconSize } from '../../common/enums/enums';
 
 const AboutPage = () => (
   <>

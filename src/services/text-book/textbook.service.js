@@ -16,13 +16,35 @@ class TextBook  {
     });
   }
 
-  addDifficultWord(payload) {
-    return this._http.load(`${this._apiPath}users`, {
+  addDifficultWord(request) {
+    const {wordId, userId, payload} = request;
+    return this._http.load(`${this._apiPath}users/${userId}/words/${wordId}`, {
       method: HttpMethod.POST,
       contentType: ContentType.JSON,
       accept: ContentType.JSON,
       hasAuth: true,
       payload: JSON.stringify(payload)
+    });
+  }
+
+  updateDifficultWord(request) {
+    const {wordId, userId, payload} = request;
+    return this._http.load(`${this._apiPath}users/${userId}/words/${wordId}`, {
+      method: HttpMethod.PUT,
+      contentType: ContentType.JSON,
+      accept: ContentType.JSON,
+      hasAuth: true,
+      payload: JSON.stringify(payload)
+    });
+  }
+
+  getDifficultWordIdList(userId) {
+    console.log('userId', userId)
+    return this._http.load(`${this._apiPath}users/${userId}/words`, {
+      method: HttpMethod.GET,
+      contentType: ContentType.JSON,
+      accept: ContentType.JSON,
+      hasAuth: true,
     });
   }
 

@@ -13,6 +13,7 @@ const WordList = ({
 
   const wordItems = wordList.map((word) => {
     const isDifficultWord = difficultWordList.includes(word.id);
+
     const isLearnedWord = learnedWordList.includes(word.id);
 
     return (
