@@ -4,7 +4,7 @@ import { GROUP_ARRAY, PAGE_ARRAY } from '../../common/constants/constants';
 import { GroupItem, PageItem, WordList } from './components/components';
 import { Button, Icon, NavLink, Spinner } from '../common/common';
 import { playAudio, pauseAudio } from '../../helpers/helpers';
-import { IconSize, ButtonType, IconName, AppRoute } from '../../common/enums/enums';
+import { IconSize, ButtonType, IconName, AppRoute, StatusWordList } from '../../common/enums/enums';
 
 import styles from './styles.module.scss';
 
@@ -29,7 +29,7 @@ const TextBookPage = () => {
     wordPlayList: state.textbook.wordPlayList,
     difficultWordList: state.textbook.difficultWordList,
     learnedWordList: state.textbook.learnedWordList,
-    typeShowWordList: state.textbook.typeShowWordList
+    typeShowWordList: state.textbook.typeShowWordList,
   }));
   const hasUser = Boolean(user);
   const currentPlayWordId = wordPlayList.currentWordId;
@@ -41,11 +41,18 @@ const TextBookPage = () => {
   }, [dispatch, currentGroup, currentPage]);
 
   useEffect(() => {
+    dispatch(textbookActionCreator.getWordListDifficultWordList());
+
+  }, [dispatch, difficultWordList ]);
+
+  useEffect(() => {
     if (hasUser) {
       userId = user.userId;
       dispatch(textbookActionCreator.getWordListDifficult(userId));
     }
   }, [dispatch, user]);
+
+  const isDifficultList = typeShowWordList === StatusWordList.DIFFICULT_WORD_LIST;
 
   const isPlay = Boolean(wordPlayList.currentWordId);
 
@@ -66,7 +73,7 @@ const TextBookPage = () => {
   );
 
   const onGroupDifficult = useCallback(
-    () => dispatch(textbookActionCreator.getWordListDifficult()),
+    () => dispatch(textbookActionCreator.getWordListDifficultWordList()),
     [dispatch]
   );
 
@@ -95,7 +102,7 @@ const TextBookPage = () => {
             { hasUser && (
               <li className={styles.menuItem}>
                 <Button
-                  className={`${styles.menuBtn} ${styles.navGroupBtn}`}
+                  className={isDifficultList ? `${styles.navGroupBtn} ${styles.active}` : `${styles.navGroupBtn}`}
                   onClick={onGroupDifficult}
                   type={ButtonType.BUTTON}
                   isBasic

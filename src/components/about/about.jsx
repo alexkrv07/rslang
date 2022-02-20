@@ -63,7 +63,7 @@ const AboutPage = () => (
             <Icon name={IconName.GITHUB} size={IconSize.SM} className={styles.menuIcon}/>
               alexkrv07
           </a>
-          <p className={styles.teamText}>Did basic project settings, initial layout, redux setup, router setup, login form, part of the TextBook page, "Audio Challenge" game, "Savannah" game, backend</p>
+          <p className={styles.teamText}>Did basic project settings, initial layout, redux setup, router setup, login form, TextBook page, Profile Page</p>
         </div>
       </div>
     </section>

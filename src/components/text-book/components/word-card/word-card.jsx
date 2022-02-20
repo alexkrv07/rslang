@@ -15,6 +15,7 @@ const WordCard = ({
   const dispatch = useDispatch();
   const { user } = useSelector(state => ({
     user: state.profile.user,
+    // typeShowWordList: state.textbook.typeShowWordList
   }));
   const wordId = word.id;
 

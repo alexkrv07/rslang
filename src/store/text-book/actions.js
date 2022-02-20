@@ -99,6 +99,18 @@ const getWordListDifficult = createAsyncThunk(
   }
 );
 
+const getWordListDifficultWordList = createAsyncThunk(
+  ActionType.GET_DIFFICULT_WORD_LIST,
+  async (_request, { getState,  extra: { services } }) => {
+    const { textbook: {difficultWordList} } = getState();
+    const wordList = await services.textBook.getDifficultWordList(difficultWordList);
+
+
+    return { wordList };
+  }
+);
+
+
 
 
 export {
@@ -112,5 +124,6 @@ export {
    addLearnedWord,
    deleteDificultWord,
    deleteLearnedWord,
-   getWordListDifficult
+   getWordListDifficult,
+   getWordListDifficultWordList
    };

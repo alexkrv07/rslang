@@ -1,9 +1,11 @@
 import { createReducer } from '@reduxjs/toolkit';
 import * as textbookActions from './actions';
+import { StatusWordList } from '../../common/enums/enums';
 
 const initialState = {
   currentPage: 0,
   currentGroup: 0,
+  typeShowWordList: StatusWordList.WORD_LIST,
   isLoading: false,
   isPlay: false,
   difficultWordList: [],
@@ -20,6 +22,7 @@ const reducer = createReducer(initialState, builder => {
   builder.addCase(textbookActions.getWordList.fulfilled, (state, action) => {
     const { wordList } = action.payload;
     state.wordList = wordList;
+    state.typeShowWordList = StatusWordList.WORD_LIST;
     state.isLoading = false;
   });
   builder.addCase(textbookActions.getWordList.pending, state => {
@@ -62,6 +65,15 @@ const reducer = createReducer(initialState, builder => {
     state.isLoading = false;
   });
   builder.addCase(textbookActions.getWordListDifficult.pending, state => {
+    state.isLoading = true;
+  });
+  builder.addCase(textbookActions.getWordListDifficultWordList.fulfilled, (state, action) => {
+    const { wordList } = action.payload;
+    state.wordList = wordList;
+    state.typeShowWordList = StatusWordList.DIFFICULT_WORD_LIST;
+    state.isLoading = false;
+  });
+  builder.addCase(textbookActions.getWordListDifficultWordList.pending, state => {
     state.isLoading = true;
   });
 });

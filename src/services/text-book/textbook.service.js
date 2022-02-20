@@ -39,7 +39,6 @@ class TextBook  {
   }
 
   getDifficultWordIdList(userId) {
-    console.log('userId', userId)
     return this._http.load(`${this._apiPath}users/${userId}/words`, {
       method: HttpMethod.GET,
       contentType: ContentType.JSON,
@@ -48,6 +47,14 @@ class TextBook  {
     });
   }
 
+  getDifficultWordList(difficultWordIdList) {
+    const requests = difficultWordIdList.map(difficultWordId => this._http.load(`${this._apiPath}words/${difficultWordId}`, {
+      method: HttpMethod.GET,
+      accept: ContentType.JSON,
+      hasAuth: false,
+    }));
+    return Promise.all(requests);
+  }
 
 }
 
