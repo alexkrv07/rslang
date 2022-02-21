@@ -140,6 +140,12 @@ const WordCard = ({
             >
               Learned
             </Button>
+            <span className={styles.wordCardanswers}>
+              Right answers: 0
+            </span>
+            <span className={styles.wordCardanswers}>
+              Wrong answers: 0
+            </span>
           </div>
         )}
 

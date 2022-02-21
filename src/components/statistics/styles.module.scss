@@ -1,0 +1,22 @@
+@import '../../styles/colors';
+
+
+.statisticsTitle,
+.statisticsSubtitle {
+  margin-top: 50px;
+  text-align: center;
+  color: $yellow-light;
+}
+
+.totalStatistics {
+  // width: 500px;
+  // margin: 10px auto;
+  text-align: center;
+  color: $yellow-light;
+}
+
+.statisticsGameWrp {
+  display: flex;
+  justify-content: center;
+  gap: 20px
+}

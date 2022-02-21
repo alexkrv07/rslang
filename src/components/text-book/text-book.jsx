@@ -33,6 +33,8 @@ const TextBookPage = () => {
   }));
   const hasUser = Boolean(user);
   const currentPlayWordId = wordPlayList.currentWordId;
+  const isDifficultList = typeShowWordList === StatusWordList.DIFFICULT_WORD_LIST;
+  const isLearnedList = typeShowWordList === StatusWordList.LEARNED_WORD_LIST;
   let userId;
 
    useEffect(() => {
@@ -41,8 +43,9 @@ const TextBookPage = () => {
   }, [dispatch, currentGroup, currentPage]);
 
   useEffect(() => {
-    dispatch(textbookActionCreator.getWordListDifficultWordList());
-
+    if (isDifficultList) {
+      dispatch(textbookActionCreator.getWordListDifficultWordList());
+    }
   }, [dispatch, difficultWordList ]);
 
   useEffect(() => {
@@ -51,8 +54,6 @@ const TextBookPage = () => {
       dispatch(textbookActionCreator.getWordListDifficult(userId));
     }
   }, [dispatch, user]);
-
-  const isDifficultList = typeShowWordList === StatusWordList.DIFFICULT_WORD_LIST;
 
   const isPlay = Boolean(wordPlayList.currentWordId);
 
@@ -77,11 +78,21 @@ const TextBookPage = () => {
     [dispatch]
   );
 
+  const onGroupLearned = useCallback(
+    () => dispatch(textbookActionCreator.getWordListLearnedWordList()),
+    [dispatch]
+  );
+
   const groupItems = GROUP_ARRAY.map((groupNumber, index) => {
+    let currentGroupNumber = currentGroup;
+    if (isDifficultList || isLearnedList) {
+      currentGroupNumber = null;
+    }
+
     return (
       <GroupItem
         groupNumber={groupNumber}
-        currentGroup={currentGroup}
+        currentGroup={currentGroupNumber}
         onChangeGroup={onChangeGroup}
         key={index}
       />
@@ -89,7 +100,16 @@ const TextBookPage = () => {
   });
 
   const pageItems = PAGE_ARRAY.map((pageNumber, index) => {
-    return <PageItem pageNumber={pageNumber} currentPage={currentPage} onChangePage={onChangePage} key={index}/>
+    let currentPageNumber = currentPage;
+    if (isDifficultList || isLearnedList) {
+      currentPageNumber = null;
+    }
+
+    return <PageItem
+      pageNumber={pageNumber}
+      currentPage={currentPageNumber}
+      onChangePage={onChangePage}
+      key={index}/>
   });
 
   return (
@@ -108,6 +128,18 @@ const TextBookPage = () => {
                   isBasic
                 >
                   Difficult words
+                </Button>
+              </li>
+            )}
+            { hasUser && (
+              <li className={styles.menuItem}>
+                <Button
+                  className={isLearnedList ? `${styles.navGroupBtn} ${styles.active}` : `${styles.navGroupBtn}`}
+                  onClick={onGroupLearned}
+                  type={ButtonType.BUTTON}
+                  isBasic
+                >
+                  Learned words
                 </Button>
               </li>
             )}

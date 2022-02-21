@@ -18,6 +18,9 @@ import TextBookPage from './text-book/text-book';
 import AudioCallPage from './audio-call/audio-call';
 import SprintPage from './sprint/sprint';
 
+
+import Statistics from './statistics/satistics';
+
 import styles from './styles.module.scss';
 
 const Routing = () => {
@@ -68,7 +71,9 @@ const Routing = () => {
             <Route path={AppRoute.BOOK} element={<PublicRoute component={TextBookPage} />} />
             <Route path={AppRoute.AUDIO_CALL} element={<PublicRoute component={AudioCallPage} />} />
             <Route path={AppRoute.SPRINT} element={<PublicRoute component={SprintPage} />} />
+            <Route path={AppRoute.STATISTICS} element={<PrivateRoute component={Statistics} />} />
             <Route path={AppRoute.ANY} element={<NotFoundPage />} />
+
           </Routes>
         </div>
       </main>

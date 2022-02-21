@@ -33,6 +33,20 @@ const reducer = createReducer(initialState, builder => {
       wordPlayList: []
     }
   });
+  // builder.addCase(textbookActions.setCurentPage.fulfilled, (state, action) => {
+  //   const { currentPage,  wordList } = action.payload;
+  //   state.wordList = wordList;
+  //   state.currentPage = currentPage;
+  // });
+  // builder.addCase(textbookActions.setCurentPage.pending, state => {
+  //   state.isLoading = true;
+  //   state.isPlay = false;
+  //   state.wordPlayList = {
+  //     currentWordId: null,
+  //     wordPlayList: []
+  //   }
+  // });
+
   builder.addCase(textbookActions.setCurentPage, (state, action) => {
     const { currentPage } = action.payload;
     state.currentPage = currentPage;
@@ -74,6 +88,15 @@ const reducer = createReducer(initialState, builder => {
     state.isLoading = false;
   });
   builder.addCase(textbookActions.getWordListDifficultWordList.pending, state => {
+    state.isLoading = true;
+  });
+  builder.addCase(textbookActions.getWordListLearnedWordList.fulfilled, (state, action) => {
+    const { wordList } = action.payload;
+    state.wordList = wordList;
+    state.typeShowWordList = StatusWordList.LEARNED_WORD_LIST;
+    state.isLoading = false;
+  });
+  builder.addCase(textbookActions.getWordListLearnedWordList.pending, state => {
     state.isLoading = true;
   });
 });

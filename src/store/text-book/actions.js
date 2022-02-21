@@ -11,7 +11,20 @@ const getWordList = createAsyncThunk(
   }
 );
 
+// const setCurentPage = createAsyncThunk(
+//   ActionType.SET_PAGE,
+//   async (page, { getState, extra: { services } }) => {
+//     const currentPage = page;
+//     console.log(currentPage)
+//     const { textbook: {currentGroup} } = getState();
+//     console.log(currentGroup)
+//     const wordList = await services.textBook.getWord({currentPage, currentGroup});
+//     return { wordList, currentGroup } ;
+//   }
+// );
+
 const setCurentPage = createAction(ActionType.SET_PAGE, (currentPage) => ({
+
   payload: {
     currentPage
   }
@@ -104,8 +117,15 @@ const getWordListDifficultWordList = createAsyncThunk(
   async (_request, { getState,  extra: { services } }) => {
     const { textbook: {difficultWordList} } = getState();
     const wordList = await services.textBook.getDifficultWordList(difficultWordList);
+    return { wordList };
+  }
+);
 
-
+const getWordListLearnedWordList = createAsyncThunk(
+  ActionType.GET_LEARNED_WORD_LIST,
+  async (_request, { getState,  extra: { services } }) => {
+    const { textbook: {learnedWordList} } = getState();
+    const wordList = await services.textBook.getDifficultWordList(learnedWordList);
     return { wordList };
   }
 );
@@ -125,5 +145,6 @@ export {
    deleteDificultWord,
    deleteLearnedWord,
    getWordListDifficult,
+   getWordListLearnedWordList,
    getWordListDifficultWordList
    };

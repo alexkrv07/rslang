@@ -46,16 +46,6 @@ const Login = () => {
   return (
     <div className={styles.login}>
       <section className={styles.form}>
-        {/* <h2 className={styles.logoWrapper}>
-          <Image
-            alt="Thread logo"
-            width="75"
-            height="75"
-            isCircular
-            src="http://s1.iconbird.com/ico/2013/8/428/w256h2561377930292cattied.png"
-          />
-          Thread
-        </h2> */}
         {getScreen(pathname)}
       </section>
     </div>

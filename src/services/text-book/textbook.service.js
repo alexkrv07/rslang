@@ -9,6 +9,7 @@ class TextBook  {
   getWord(request) {
     const page = request.currentPage;
     const group = request.currentGroup;
+    console.log('page', page, 'group', group)
     return this._http.load(`${this._apiPath}words?group=${group}&page=${page}`, {
       method: HttpMethod.GET,
       accept: ContentType.JSON,
